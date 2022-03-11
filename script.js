@@ -5,9 +5,21 @@ const listLink = document.getElementById('listLink')
 const newLink = document.getElementById('newLink')
 
 
+//0.5 Vi skapar editProduct 
+// OBS rad 93 
+//                  p = 
+//       slarviga Stefan...fast det funkar ändå? tills...
+//                "use strict"
+
+
 //1. Modul ! Vad är det? 
+
 //2. Vi skapar produkt  med Class, int, några functions
 //3. Make it work... export, import, type=module 
+
+// ---
+
+
 
 
 
@@ -52,6 +64,9 @@ function showSection(sectionsId){
     }
 }
 
+function editProduct(id){
+    alert('Nu editeras ' + id);
+}
 
 
 function renderTr(product){
