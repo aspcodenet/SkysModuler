@@ -1,6 +1,6 @@
-const sectionList = document.getElementById('sectionList')
-const sectionNew = document.getElementById('sectionNew')
-const sectionEdit = document.getElementById('sectionEdit')
+import {goodProduct, Product} from './Data/Product.js'   
+import { showSection } from './UI/Section.js'
+
 const listLink = document.getElementById('listLink')
 const newLink = document.getElementById('newLink')
 
@@ -22,18 +22,13 @@ const newLink = document.getElementById('newLink')
 
 
 
+console.log(goodProduct)
+
 
 const baseApi = 'https://fakestoreapi.com/products' 
 
 
-class Product{
-    constructor(id,name,price,color){
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.color = color;
-   }
-}
+
 
 
 newLink.addEventListener("click",()=>{ 
@@ -41,32 +36,17 @@ newLink.addEventListener("click",()=>{
 });
 
 listLink.addEventListener("click",()=>{ 
-showSection('sectionList');    
+    showSection('sectionList');    
 });
 
 
 
-function showSection(sectionsId){
-    if(sectionsId == 'sectionList'){
-        sectionList.style.display = "block";
-        sectionNew.style.display = "none";
-        sectionEdit.style.display = "none";
-    }
-    else if(sectionsId == 'sectionNew'){
-        sectionList.style.display = "none";
-        sectionNew.style.display = "block";
-        sectionEdit.style.display = "none";
-    }
-    else if(sectionsId == 'sectionEdit'){
-        sectionList.style.display = "none";
-        sectionNew.style.display = "none";
-        sectionEdit.style.display = "block";
-    }
-}
 
 function editProduct(id){
     alert('Nu editeras ' + id);
 }
+
+window.editProduct = editProduct;
 
 
 function renderTr(product){
@@ -82,6 +62,7 @@ function renderTr(product){
     productTableBody.innerHTML = productTableBody.innerHTML + template;
 } 
 // 
+
 
 function refreshItems(){
 
@@ -101,7 +82,7 @@ function refreshItems(){
             //json -> items
             console.log(array)
             array.forEach(prod=>{
-                p = new Product(prod.id,
+                let p = new Product(prod.id,
                     prod.title,
                     prod.price,
                     prod.category)                    
